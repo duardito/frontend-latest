@@ -1,0 +1,16 @@
+
+<div  ng-controller="empty" >
+    <head>
+        <style>
+            {{empty.headerPage.headerContent}}
+        </style>
+    </head>
+
+    <div ng-style="empty.headerPage.headerContent">
+        <div  ng-bind-html="empty.layout.schema | unsafe"/>
+    </div>
+    <div ng-bind-html="empty.footerPage.footerContent"/>
+</div>
+
+
+
