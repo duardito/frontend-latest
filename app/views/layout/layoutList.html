@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-layout list
-</body>
-</html>
+<div id="rest" class="container-fluid" ng-controller="layoutListController">
+  <table height="15px" class="table table-condensed table-bordered table-hover table-striped">
+    <tr>
+      <td class="info">
+        {{'LAYOUT_NAME_TEXT' | translate}}
+      </td>
+    </tr>
+    <tr ng-repeat="layout in layoutList">
+      <td class="info">
+        {{layout.name}}
+      </td>
+
+    </tr>
+  </table>
+</div>

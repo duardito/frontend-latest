@@ -30,10 +30,12 @@ appModule.config(['$routeProvider', '$locationProvider',
 
     $routeProvider
       .when('/layoutList', {
-        templateUrl: 'views/layout/layoutList.html'
+        templateUrl: 'views/layout/layoutList.html',
+        controller: 'layoutListController'
       })
       .when('/layout', {
-        templateUrl: 'views/layout/layout.html'
+        templateUrl: 'views/layout/layout.html',
+        controller: 'saveLayoutController'
       })
       .when('/welcome', {
         templateUrl: 'views/home.html'
@@ -52,7 +54,8 @@ appModule.config(['$routeProvider', '$locationProvider',
         controller: 'pageListController'
       })
       .when('/page', {
-        templateUrl: 'views/pages/page.html'
+        templateUrl: 'views/pages/page.html',
+        controller: 'savePageController'
 
       }).when('/empty', {
       templateUrl: 'views/empty/empty.html'
