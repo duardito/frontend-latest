@@ -16,51 +16,60 @@ var appModule = angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-	'ui.sortable',
-	'pascalprecht.translate',
-	'mytodoApp.filters',
-	'mytodoApp.directives'
+    'ui.sortable',
+    'pascalprecht.translate',
+    'mytodoApp.filters',
+    'mytodoApp.directives'
   ]);
-  
-  var filters = angular.module('mytodoApp.filters', []);
+
+var filters = angular.module('mytodoApp.filters', []);
 var directives = angular.module('mytodoApp.directives', []);
-  
-appModule.config(['$routeProvider','$locationProvider',
-    function($routeProvider, $locationProvider) {
 
-        $routeProvider
-            .when('/welcome', {
-                templateUrl: 'home.html'
-            })
-            .when('/login', {
-                templateUrl: 'views/login/login.html'
-            })
-            .when('/user', {
-                templateUrl: 'views/users/user.html'
-            })
-            .when('/userList', {
-                templateUrl: 'views/users/userList.html'
-            })
-            .when('/pageList', {
-                templateUrl: 'views/pages/pageList.html',
-                controller:'pageListController'
-            })
-            .when('/page', {
-                templateUrl: 'views/pages/page.html'
-            }).when('/empty', {
-                templateUrl: 'views/empty/empty.html'
-        }).when('/:name', {
-            templateUrl: 'views/empty/empty.html',
-            controller: PagesController });
+appModule.config(['$routeProvider', '$locationProvider',
+  function ($routeProvider, $locationProvider) {
 
-    }
+    $routeProvider
+      .when('/layoutList', {
+        templateUrl: 'views/layout/layoutList.html'
+      })
+      .when('/layout', {
+        templateUrl: 'views/layout/layout.html'
+      })
+      .when('/welcome', {
+        templateUrl: 'views/home.html'
+      })
+      .when('/login', {
+        templateUrl: 'views/login/login.html'
+      })
+      .when('/user', {
+        templateUrl: 'views/users/user.html'
+      })
+      .when('/userList', {
+        templateUrl: 'views/users/userList.html'
+      })
+      .when('/pageList', {
+        templateUrl: 'views/pages/pageList.html',
+        controller: 'pageListController'
+      })
+      .when('/page', {
+        templateUrl: 'views/pages/page.html'
+
+      }).when('/empty', {
+      templateUrl: 'views/empty/empty.html'
+
+    }).when('/:name', {
+      templateUrl: 'views/empty/empty.html',
+      controller: PagesController
+    });
+
+  }
 ]);
 
-  function PagesController($scope, $http, $route, $routeParams, $compile) {
-    /**$route.current.templateUrl = '' + $routeParams.name + ".html";**/
-    $route.current.templateUrl =  "empty/empty.html";
-    $http.get($route.current.templateUrl).then(function (msg) {
-        $('#views').html($compile(msg.data)($scope));
-    });
+function PagesController($scope, $http, $route, $routeParams, $compile) {
+  /**$route.current.templateUrl = '' + $routeParams.name + ".html";**/
+  $route.current.templateUrl = "views/empty/empty.html";
+  $http.get($route.current.templateUrl).then(function (msg) {
+    $('#views').html($compile(msg.data)($scope));
+  });
 }
 PagesController.$inject = ['$scope', '$http', '$route', '$routeParams', '$compile'];
