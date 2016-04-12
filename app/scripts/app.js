@@ -29,6 +29,14 @@ appModule.config(['$routeProvider', '$locationProvider',
   function ($routeProvider, $locationProvider) {
 
     $routeProvider
+      .when('/group', {
+        templateUrl: 'views/group/group.html',
+        controller: 'groupController'
+      })
+      .when('/groupList', {
+        templateUrl: 'views/group/groupList.html',
+        controller: 'groupListController'
+      })
       .when('/layoutList', {
         templateUrl: 'views/layout/layoutList.html',
         controller: 'layoutListController'
