@@ -17,16 +17,11 @@ var appModule = angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
-    'pascalprecht.translate',
-    'mytodoApp.filters',
-    'mytodoApp.directives'
+    'pascalprecht.translate'
   ]);
 
-var filters = angular.module('mytodoApp.filters', []);
-var directives = angular.module('mytodoApp.directives', []);
-
 appModule.config(['$routeProvider', '$locationProvider',
-  function ($routeProvider, $locationProvider) {
+  function ($routeProvider) {
 
     $routeProvider
       .when('/group', {
@@ -70,7 +65,7 @@ appModule.config(['$routeProvider', '$locationProvider',
 
     }).when('/:name', {
       templateUrl: 'views/empty/empty.html',
-      controller: PagesController
+      //controller: PagesController
     });
 
   }
@@ -78,7 +73,7 @@ appModule.config(['$routeProvider', '$locationProvider',
 
 function PagesController($scope, $http, $route, $routeParams, $compile) {
   /**$route.current.templateUrl = '' + $routeParams.name + ".html";**/
-  $route.current.templateUrl = "views/empty/empty.html";
+  $route.current.templateUrl = 'views/empty/empty.html';
   $http.get($route.current.templateUrl).then(function (msg) {
     $('#views').html($compile(msg.data)($scope));
   });

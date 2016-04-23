@@ -1,4 +1,4 @@
-// Generated on 2016-04-10 using generator-angular 0.11.1
+// Generated on 2016-04-23 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -188,14 +188,14 @@ module.exports = function (grunt) {
         fileTypes:{
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-              detect: {
-                js: /'(.*\.js)'/gi
-              },
-              replace: {
-                js: '\'{{filePath}}\','
-              }
+            detect: {
+              js: /'(.*\.js)'/gi
+            },
+            replace: {
+              js: '\'{{filePath}}\','
             }
           }
+        }
       }
     },
 
