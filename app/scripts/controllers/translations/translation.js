@@ -28,7 +28,10 @@ appModule.config(function ($translateProvider) {
       LOGIN_TEXT: 'Login',
       LAYOUT_ADMIN_TEXT: 'Layout Admin',
       SAVE_LAYOUT_TEXT :'Save layout',
-      LAYOUT_LIST_TEXT :'Layout list'
+      LAYOUT_LIST_TEXT :'Layout list',
+      PAGE_NAME_CREATOR_TEXT: 'Page creator',
+      PAGE_LAYOUT_CREATOR_TEXT: 'Layout creator',
+      PAGE_LAYOUT_SCHEMA_TEXT: 'Layout data'
     })
     .translations('de', {
       BUTTON_TEXT_DE: 'englisch',
