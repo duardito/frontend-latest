@@ -10,6 +10,8 @@
  */
 var appModule = angular
   .module('mytodoApp', [
+    'mytodoApp.filters',
+    'mytodoApp.directives',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -20,6 +22,25 @@ var appModule = angular
     'pascalprecht.translate'
   ]);
 
+var filters = angular.module('mytodoApp.filters', []);
+var directives = angular.module('mytodoApp.directives', []);
+
+appModule.directive("profile", function() {
+  return {
+    template: '<ng-include src="getTemplateUrl()"/>',
+    scope: {
+      user: '=data'
+    },
+    restrict: 'E',
+    controller: function($scope) {
+      //function used on the ng-include to resolve the template
+      $scope.getTemplateUrl = function() {
+          return "views/templates/header.tpl.html";
+
+      }
+    }
+  };
+});
 appModule.config(['$routeProvider', '$locationProvider',
   function ($routeProvider) {
 
