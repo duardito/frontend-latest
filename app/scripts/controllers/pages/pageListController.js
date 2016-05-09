@@ -1,5 +1,5 @@
 appModule.controller('pageListController', function ($scope, $http) {
-  $http.get('http://keemono.com:8888/keemono/page').success(function (data) {
+  $http.get('http://samuris.com:9229/keemono/page').success(function (data) {
     $scope.pagelist = data;
     // this callback will be called asynchronously
     // when the response is available

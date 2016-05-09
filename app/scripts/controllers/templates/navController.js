@@ -5,7 +5,7 @@ appModule.controller('navUrlController',function($scope, $http, SelectedId) {
 		SelectedId.dataObj = obj.target.getAttribute("id");
     }
 	
-    $http.get('http://keemono.com:8888/keemono/page').
+    $http.get('http://samuris.com:9229/keemono/page').
         success(function(data) {
             $scope.urls=data;
             // this callback will be called asynchronously
@@ -21,7 +21,7 @@ appModule.controller('navUrlController',function($scope, $http, SelectedId) {
 appModule.controller('empty',function($scope, $http,$resource, $location, SelectedId) {
 
     var lastParam = SelectedId.dataObj;
-    var value = $resource('http://keemono.com:8888/keemono/page/:name');
+    var value = $resource('http://samuris.com:9229/keemono/page/:name');
     $scope.empty =value.get({
         name: lastParam
     }, function(resp) {
