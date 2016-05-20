@@ -47,6 +47,15 @@ appModule.config(['$routeProvider', '$locationProvider',
   function ($routeProvider) {
 
     $routeProvider
+      .when('/content', {
+        templateUrl: 'views/content/content.html',
+        controller: 'saveContentController'
+      })
+      .when('/contentList', {
+        templateUrl: 'views/content/contentList.html',
+        controller: 'contentListController'
+      })
+      
       .when('/group', {
         templateUrl: 'views/group/group.html',
         controller: 'groupController'

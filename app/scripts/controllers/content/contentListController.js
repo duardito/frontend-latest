@@ -1,4 +1,4 @@
-appModule.controller('saveContentController', ['baseUrl',function ($scope, $http, $route) {
+appModule.controller('contentListController', ['baseUrl',function ($scope, $http, $route) {
   $scope.submit = function () {
     $http.post('baseUrl'+'content/save',
       {
