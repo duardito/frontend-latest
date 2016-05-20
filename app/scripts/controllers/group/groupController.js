@@ -1,8 +1,8 @@
-appModule.controller('groupController', function ($scope, $http, $route) {
+appModule.controller('groupController',['baseUrl', function ($scope, $http, $route) {
   $scope.groups = "{}";
 
   $scope.submit = function () {
-    $http.post('http://localhost:9000/keemono/page/save',
+    $http.post('baseUrl'+'group/save',
       {
         "name": $scope.pagename,
         "headerPage": {headerContent: $scope.headpage},
@@ -17,4 +17,4 @@ appModule.controller('groupController', function ($scope, $http, $route) {
       // or server returns response with an error status.
     });
   };
-});
+}]);

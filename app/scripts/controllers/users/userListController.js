@@ -1,6 +1,6 @@
-	appModule.controller('userListController',function($scope, $http) {
+	appModule.controller('userListController',['baseUrl',function($scope, $http) {
 	$scope.submit = function() {
-		$http.get('http://31.200.241.46:8080/admin/user/save',
+		$http.get('baseUrl'+'user/save',
 				{"username": $scope.username, "password": $scope.password, "email" : $scope.email, "role" :$scope.role.name}).
 				success(function(data, status, headers, config) {
 					// this callback will be called asynchronously
@@ -11,4 +11,4 @@
 					// or server returns response with an error status.
 				});
 	};
-});
+}]);

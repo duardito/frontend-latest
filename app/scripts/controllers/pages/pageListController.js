@@ -1,5 +1,5 @@
-appModule.controller('pageListController', function ($scope, $http) {
-  $http.get('http://samuris.com:9229/keemono/page').success(function (data) {
+appModule.controller('pageListController',['baseUrl', function ($scope, $http) {
+  $http.get('baseUrl'+'page').success(function (data) {
     $scope.pagelist = data;
     // this callback will be called asynchronously
     // when the response is available
@@ -7,4 +7,4 @@ appModule.controller('pageListController', function ($scope, $http) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
   });
-});
+}]);

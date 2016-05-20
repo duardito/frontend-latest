@@ -1,8 +1,7 @@
-appModule.controller('saveLayoutController',['baseUrl', function ($scope, $http, $route) {
-  $scope.layouts = "{}";
+appModule.controller('saveContentController', ['baseUrl',function ($scope, $http, $route) {
 
   $scope.submit = function () {
-    $http.post('baseUrl'+'layout/save',
+    $http.post('baseUrl'+'content/save',
       {
         "name": $scope.pagename,
         "headerPage": {headerContent: $scope.headpage},

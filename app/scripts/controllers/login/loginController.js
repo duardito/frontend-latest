@@ -1,4 +1,4 @@
-appModule.controller('loginController',function($scope, $http, $route) {
+appModule.controller('loginController',['baseUrl', function($scope, $http, $route) {
 			var currentUser = null;
 			var authorized = false;
 
@@ -12,7 +12,7 @@ appModule.controller('loginController',function($scope, $http, $route) {
 				},
 				login:function () {
 
-					$http.post('http://localhost:8080/keemono/login',
+					$http.post('baseUrl'+'login',
 						{"username": $scope.username, "password": $scope.password}).
 						success(function(data, status, headers, config) {
 
@@ -53,5 +53,4 @@ appModule.controller('loginController',function($scope, $http, $route) {
 					return authorized;
 				}
 			};
-		}
-	);
+		}]);

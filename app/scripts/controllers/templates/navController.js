@@ -1,11 +1,11 @@
 
-appModule.controller('navUrlController',function($scope, $http, SelectedId) {
+appModule.controller('navUrlController',['baseUrl', function($scope, $http, SelectedId) {
 	
 	 $scope.ShowId = function(obj) {
 		SelectedId.dataObj = obj.target.getAttribute("id");
     }
 	
-    $http.get('http://samuris.com:9229/keemono/page').
+    $http.get('baseUrl'+'page').
         success(function(data) {
             $scope.urls=data;
             // this callback will be called asynchronously
@@ -15,13 +15,13 @@ appModule.controller('navUrlController',function($scope, $http, SelectedId) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
-});
+}]);
 
 
-appModule.controller('empty',function($scope, $http,$resource, $location, SelectedId) {
+appModule.controller('empty' ,['baseUrl', function($scope, $http,$resource, $location, SelectedId) {
 
     var lastParam = SelectedId.dataObj;
-    var value = $resource('http://samuris.com:9229/keemono/page/:name');
+    var value = $resource('baseUrl'+'page/:name');
     $scope.empty =value.get({
         name: lastParam
     }, function(resp) {
@@ -30,4 +30,4 @@ appModule.controller('empty',function($scope, $http,$resource, $location, Select
 
      });
     return $scope.empty;
-});
+}]);

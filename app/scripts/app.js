@@ -25,6 +25,8 @@ var appModule = angular
 var filters = angular.module('mytodoApp.filters', []);
 var directives = angular.module('mytodoApp.directives', []);
 
+appModule.constant('baseUrl', 'http://localhost:9000/keemono/');
+
 appModule.directive("profile", function() {
   return {
     template: '<ng-include src="getTemplateUrl()"/>',

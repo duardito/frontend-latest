@@ -1,5 +1,5 @@
-appModule.controller('groupListController', function ($scope, $http) {
-  $http.get('http://samuris.com:9229/keemono/layout/list').success(function (data) {
+appModule.controller('groupListController',['baseUrl', function ($scope, $http) {
+  $http.get('baseUrl'+'group/list').success(function (data) {
     $scope.groupList = data;
     // this callback will be called asynchronously
     // when the response is available
@@ -7,4 +7,4 @@ appModule.controller('groupListController', function ($scope, $http) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
   });
-});
+}]);

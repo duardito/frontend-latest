@@ -1,4 +1,4 @@
-appModule.controller('savePageController', function ($scope, $http, $route) {
+appModule.controller('savePageController',['baseUrl', function ($scope, $http, $route) {
   $scope.layouts = [{id: '1', name: 'layout 1', img: 'assets/img/Desert-mini.jpg'}, {
     id: '2',
     name: 'layout 2',
@@ -6,7 +6,7 @@ appModule.controller('savePageController', function ($scope, $http, $route) {
   }];
 
   $scope.submit = function () {
-    $http.post('http://localhost:9000/keemono/page/save',
+    $http.post('baseUrl'+'page/save',
       {
         "name": $scope.pagename,
         "headerPage": {headerContent: $scope.headpage},
@@ -21,4 +21,4 @@ appModule.controller('savePageController', function ($scope, $http, $route) {
       // or server returns response with an error status.
     });
   };
-});
+}]);
