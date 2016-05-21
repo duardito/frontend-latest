@@ -1,5 +1,5 @@
 appModule.controller('pageListController',['$scope', '$http', 'globalVars', function ($scope, $http, globalVars) {
-  $http.get(globalVars.keemonoUrl+'page').success(function (data) {
+  $http.get(globalVars.keemonoUrl+'page/list').success(function (data) {
     $scope.pagelist = data;
     // this callback will be called asynchronously
     // when the response is available
