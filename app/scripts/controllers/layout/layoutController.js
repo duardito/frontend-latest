@@ -1,8 +1,8 @@
-appModule.controller('saveLayoutController',['baseUrl', function ($scope, $http, $route) {
+appModule.controller('saveLayoutController',['$scope', '$http', '$route','globalVars', function ($scope, $http, $route, globalVars) {
   $scope.layouts = "{}";
 
   $scope.submit = function () {
-    $http.post('baseUrl'+'layout/save',
+    $http.post(globalVars.keemonoUrl+'layout/save',
       {
         "name": $scope.pagename,
         "headerPage": {headerContent: $scope.headpage},

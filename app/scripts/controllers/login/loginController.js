@@ -1,4 +1,4 @@
-appModule.controller('loginController',['baseUrl', function($scope, $http, $route) {
+appModule.controller('loginController',['$scope', '$http', '$route','globalVars', function($scope, $http, $route, globalVars) {
 			var currentUser = null;
 			var authorized = false;
 
@@ -12,7 +12,7 @@ appModule.controller('loginController',['baseUrl', function($scope, $http, $rout
 				},
 				login:function () {
 
-					$http.post('baseUrl'+'login',
+					$http.post(globalVars.keemonoUrl+'login',
 						{"username": $scope.username, "password": $scope.password}).
 						success(function(data, status, headers, config) {
 

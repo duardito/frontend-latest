@@ -1,5 +1,5 @@
-appModule.controller('groupListController',['baseUrl', function ($scope, $http) {
-  $http.get('baseUrl'+'group/list').success(function (data) {
+appModule.controller('groupListController',['$scope', '$http', '$route','globalVars', function ($scope, $http, $route,globalVars) {
+  $http.get(globalVars.keemonoUrl+'group/list').success(function (data) {
     $scope.groupList = data;
     // this callback will be called asynchronously
     // when the response is available

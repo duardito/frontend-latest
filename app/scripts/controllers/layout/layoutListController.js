@@ -1,5 +1,5 @@
-appModule.controller('layoutListController',['baseUrl', function ($scope, $http) {
-  $http.get('baseUrl'+'layout/list').success(function (data) {
+appModule.controller('layoutListController', ['$scope', '$http','globalVars' , function ($scope, $http, globalVars) {
+  $http.get(globalVars.keemonoUrl + 'layout').success(function (data) {
     $scope.layoutList = data;
     // this callback will be called asynchronously
     // when the response is available

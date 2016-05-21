@@ -1,12 +1,9 @@
-
-appModule.controller('navUrlController',['baseUrl', function($scope, $http, SelectedId) {
-	
+appModule.controller('navUrlController',['$scope', '$http', 'SelectedId','globalVars', function($scope, $http, SelectedId, globalVars) {
 	 $scope.ShowId = function(obj) {
 		SelectedId.dataObj = obj.target.getAttribute("id");
     }
-	
-    $http.get('baseUrl'+'page').
-        success(function(data) {
+
+    $http.get(globalVars.keemonoUrl+'page'). success(function(data) {
             $scope.urls=data;
             // this callback will be called asynchronously
             // when the response is available
@@ -18,10 +15,10 @@ appModule.controller('navUrlController',['baseUrl', function($scope, $http, Sele
 }]);
 
 
-appModule.controller('empty' ,['baseUrl', function($scope, $http,$resource, $location, SelectedId) {
+appModule.controller('empty' ,['$scope', '$http', '$route', '$location', 'SelectedId','globalVars', function($scope, $http,$resource, $location, SelectedId, globalVars) {
 
     var lastParam = SelectedId.dataObj;
-    var value = $resource('baseUrl'+'page/:name');
+    var value = $resource(globalVars.keemonoUrl+'page/:name');
     $scope.empty =value.get({
         name: lastParam
     }, function(resp) {

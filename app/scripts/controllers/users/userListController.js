@@ -1,6 +1,6 @@
-	appModule.controller('userListController',['baseUrl',function($scope, $http) {
+	appModule.controller('userListController',['$scope', '$http', 'globalVars',function($scope, $http) {
 	$scope.submit = function() {
-		$http.get('baseUrl'+'user/save',
+		$http.get(globalVars.keemonoUrl+'user/save',
 				{"username": $scope.username, "password": $scope.password, "email" : $scope.email, "role" :$scope.role.name}).
 				success(function(data, status, headers, config) {
 					// this callback will be called asynchronously

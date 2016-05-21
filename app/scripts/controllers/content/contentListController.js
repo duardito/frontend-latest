@@ -1,6 +1,6 @@
-appModule.controller('contentListController', ['baseUrl',function ($scope, $http, $route) {
+appModule.controller('contentListController', ['$scope', '$http', '$route','globalVars',function ($scope, $http, $route, globalVars) {
   $scope.submit = function () {
-    $http.post('baseUrl'+'content/save',
+    $http.post(globalVars.keemonoUrl+'content/save',
       {
         "content": $scope.content
       }).success(function (data, status, headers, config) {

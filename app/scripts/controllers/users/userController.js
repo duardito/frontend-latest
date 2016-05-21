@@ -1,6 +1,6 @@
-	appModule.controller('saveUserController',['baseUrl',function($scope, $http) {
+	appModule.controller('saveUserController',['$scope', '$http', 'globalVars',function($scope, $http) {
 	$scope.submit = function() {
-		$http.post('baseUrl'+'user/save',
+		$http.post(globalVars.keemonoUrl+'user/save',
 				{"username": $scope.username, "password": $scope.password, "email" : $scope.email, "role" :$scope.role.name}).
 				success(function(data, status, headers, config) {
 					// this callback will be called asynchronously

@@ -25,7 +25,11 @@ var appModule = angular
 var filters = angular.module('mytodoApp.filters', []);
 var directives = angular.module('mytodoApp.directives', []);
 
-appModule.constant('baseUrl', 'http://localhost:9000/keemono/');
+//appModule.constant(globalVars.keemonoUrl, 'http://samuris.com:9229/keemono/');
+
+appModule.value('globalVars', {
+  keemonoUrl:'http://samuris.com:9229/keemono/'
+});
 
 appModule.directive("profile", function() {
   return {
@@ -55,7 +59,7 @@ appModule.config(['$routeProvider', '$locationProvider',
         templateUrl: 'views/content/contentList.html',
         controller: 'contentListController'
       })
-      
+
       .when('/group', {
         templateUrl: 'views/group/group.html',
         controller: 'groupController'
@@ -99,7 +103,6 @@ appModule.config(['$routeProvider', '$locationProvider',
       templateUrl: 'views/empty/empty.html',
       //controller: PagesController
     });
-
   }
 ]);
 
