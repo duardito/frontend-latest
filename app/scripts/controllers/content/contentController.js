@@ -1,8 +1,9 @@
 appModule.controller('saveContentController', [ '$scope', '$http', '$route','globalVars',function ($scope, $http, $route,globalVars) {
   $scope.submit = function () {
-    $http.post(globalVars.keemonoUrl+'content/save',
-      {
-        "content": $scope.content
+    $http.post(globalVars.keemonoUrl+'content',{
+        "content": $scope.content,
+        "name":$scope.name,
+        "creator":$scope.creator
       }).success(function (data, status, headers, config) {
       $route.reload();
       // this callback will be called asynchronously

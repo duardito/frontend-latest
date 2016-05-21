@@ -3,7 +3,7 @@ appModule.controller('navUrlController',['$scope', '$http', 'SelectedId','global
 		SelectedId.dataObj = obj.target.getAttribute("id");
     }
 
-    $http.get(globalVars.keemonoUrl+'page'). success(function(data) {
+    $http.get(globalVars.keemonoUrl+'page/list'). success(function(data) {
             $scope.urls=data;
             // this callback will be called asynchronously
             // when the response is available
@@ -15,7 +15,7 @@ appModule.controller('navUrlController',['$scope', '$http', 'SelectedId','global
 }]);
 
 
-appModule.controller('empty' ,['$scope', '$http', '$route', '$location', 'SelectedId','globalVars', function($scope, $http,$resource, $location, SelectedId, globalVars) {
+appModule.controller('empty' ,['$scope', '$http', '$resource', '$location', 'SelectedId','globalVars', function($scope, $http,$resource, $location, SelectedId, globalVars) {
 
     var lastParam = SelectedId.dataObj;
     var value = $resource(globalVars.keemonoUrl+'page/:name');
