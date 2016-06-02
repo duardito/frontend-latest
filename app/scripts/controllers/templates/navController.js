@@ -15,7 +15,8 @@ appModule.controller('navUrlController',['$scope', '$http', 'SelectedId','global
 }]);
 
 
-appModule.controller('empty' ,['$scope', '$http', '$resource', '$location', 'SelectedId','globalVars', function($scope, $http,$resource, $location, SelectedId, globalVars) {
+appModule.controller('empty' ,['$scope', '$http', '$resource', '$location', 'SelectedId','globalVars',
+  function($scope, $http,$resource, $location, SelectedId, globalVars) {
 
     var lastParam = SelectedId.dataObj;
     var value = $resource(globalVars.keemonoUrl+'page/:name');

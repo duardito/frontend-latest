@@ -82,6 +82,12 @@ appModule.config(['$routeProvider', '$locationProvider',
         templateUrl: 'views/login/login.html',
         controller: 'loginController'
       })
+
+      .when('/logout', {
+        template: '',
+        controller: 'logoutController'
+      })
+
       .when('/user', {
         templateUrl: 'views/users/user.html'
       })
@@ -147,8 +153,18 @@ appModule.config(['$routeProvider', '$locationProvider',
  .controller('Controller', function Controller(jwtHelper) {
  var bool = jwtHelper.isTokenExpired(expToken);
  })
+ appModule.config(function($stateProvider, Auth0Store, $locationProvider) {
+ $stateProvider.state('logout', {
+ url: '/logout',
+ controller: function($scope, $route) {
 
+ Auth0Store.remove(Auth0Store.get('api_key'));
+ $route.reload()
+ }
+ })});
  */
+
+
 
 
 appModule.factory('Auth0Store', function (store) {
@@ -166,6 +182,7 @@ appModule.config(function ($httpProvider) {
         } else {
           var token = Auth0Store.get('api_key');
           if(token != null){
+
             var bool = jwtHelper.isTokenExpired(token);
             //var date = jwtHelper.getTokenExpirationDate(token);
             //console.log('exopre :' + date);
