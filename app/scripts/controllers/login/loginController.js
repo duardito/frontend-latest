@@ -32,7 +32,7 @@ appModule.controller('logoutController', ['$window','$scope', '$http','globalVar
 
     Auth0Store.remove('api_key');
 
-    console.log(' brrrr :' + Auth0Store.get('api_key'));
+   // console.log(' brrrr :' + Auth0Store.get('api_key'));
     // var myNewObject = Auth0Store.get('api_key');
     //console.table(' sirr :' +myNewObject);
   //$location.path('/');
