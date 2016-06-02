@@ -22,7 +22,6 @@ appModule.controller('empty' ,['$scope', '$http', '$resource', '$location', 'Sel
     $scope.empty =value.get({
         name: lastParam
     }, function(resp) {
-      console.log('las resp es :' + resp);
      }, function(err) {
 
      });
