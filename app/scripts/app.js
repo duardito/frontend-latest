@@ -181,14 +181,27 @@ appModule.factory('authenticatedService', function(Auth0Store, jwtHelper) {
   return {
     getAuthenticated:function () {
       var token = Auth0Store.get('api_key');
-      console.log('el token :' + token);
       if(token != null){
-        return jwtHelper.isTokenExpired(token);
+        return !jwtHelper.isTokenExpired(token);
       }
       return false;
     }
   }
  });
+
+appModule.controller('testController',
+  ['$window','$scope', '$http','globalVars','Auth0Store','$route' ,'authenticatedService',
+  function ($window,$scope, $http, globalVars,Auth0Store, $route, authenticatedService) {
+
+    $scope.goCats = authenticatedService.getAuthenticated();
+
+    // console.log(' brrrr :' + Auth0Store.get('api_key'));
+    // var myNewObject = Auth0Store.get('api_key');
+    //console.table(' sirr :' +myNewObject);
+    //$location.path('/');
+    //$window.location.reload();
+
+  }]);
 
 
 appModule.config(function ($httpProvider) {

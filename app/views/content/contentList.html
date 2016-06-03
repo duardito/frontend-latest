@@ -1,1 +1,20 @@
-list
+<div id="rest" class="container-fluid" ng-controller="contentListController">
+  <table height="15px" class="table table-condensed table-bordered table-hover table-striped">
+    <tr>
+      <td class="info">
+        {{'CONTENT_NAME_TEXT' | translate}}
+      </td>
+      <td class="info">
+        {{'CONTENT_CONTENT_TEXT' | translate}}
+      </td>
+    </tr>
+    <tr ng-repeat="content in contentList">
+      <td class="info">
+        {{content.name}}
+      </td>
+      <td class="info">
+        {{content.content}}
+      </td>
+    </tr>
+  </table>
+</div>

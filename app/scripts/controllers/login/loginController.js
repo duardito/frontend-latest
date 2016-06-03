@@ -1,5 +1,5 @@
-appModule.controller('loginController', [ '$scope', '$http', '$route','globalVars','Auth0Store','authenticatedService'
-  ,function ($scope, $http, $route,globalVars, Auth0Store,authenticatedService) {
+appModule.controller('loginController', [ '$window','$scope', '$http', '$route','globalVars','Auth0Store','authenticatedService'
+  ,function ($window,$scope, $http, $route,globalVars, Auth0Store,authenticatedService) {
   $scope.submit = function () {
     $http.post(
       globalVars.keemonoUrl+'auth',
@@ -14,7 +14,8 @@ appModule.controller('loginController', [ '$scope', '$http', '$route','globalVar
       //var myNewObject = Auth0Store.get('api_key');
 
       //console.table(' sirr :' +myNewObject);
-      $route.reload();
+      $window.location.reload();
+      $window.location.href='/';
       // this callback will be called asynchronously
       // when the response is available
     }).error(function (data, status, headers, config) {
@@ -29,13 +30,14 @@ appModule.controller('loginController', [ '$scope', '$http', '$route','globalVar
 
 appModule.controller('logoutController', ['$window','$scope', '$http','globalVars','Auth0Store','$route' ,
   function ($window,$scope, $http, globalVars,Auth0Store, $route) {
+    $scope.submit = function () {
+      Auth0Store.remove('api_key');
+      //$route.reload();
 
-    Auth0Store.remove('api_key');
-
-   // console.log(' brrrr :' + Auth0Store.get('api_key'));
-    // var myNewObject = Auth0Store.get('api_key');
-    //console.table(' sirr :' +myNewObject);
-  //$location.path('/');
-  //$window.location.reload();
-
+      // console.log(' brrrr :' + Auth0Store.get('api_key'));
+      // var myNewObject = Auth0Store.get('api_key');
+      //console.table(' sirr :' +myNewObject);
+      //$location.path('/');
+      $window.location.reload();
+    }
 }]);

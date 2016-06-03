@@ -1,6 +1,5 @@
 appModule.controller('saveLayoutController',['$scope', '$http', '$route','globalVars', function ($scope, $http, $route, globalVars) {
   $scope.layouts = "{}";
-
   $scope.submit = function () {
     $http.post(globalVars.keemonoUrl+'layout/save',
       {
