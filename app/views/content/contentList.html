@@ -1,24 +1,20 @@
-<div id="rest" class="container-fluid" ng-controller="layoutListController">
+<div id="rest" class="container-fluid" ng-controller="contentListController">
   <table height="15px" class="table table-condensed table-bordered table-hover table-striped">
     <tr>
       <td class="info">
-        {{'LAYOUT_NAME_TEXT' | translate}}
+        {{'CONTENT_NAME_TEXT' | translate}}
       </td>
       <td class="info">
-        {{'LAYOUT_DATA_TEXT' | translate}}
+        {{'CONTENT_CONTENT_TEXT' | translate}}
       </td>
     </tr>
-    <tr ng-repeat="layout in layoutList">
+    <tr ng-repeat="content in contentList">
       <td class="info">
-        {{layout.name}}
+        {{content.name}}
       </td>
       <td class="info">
-        {{layout.schema}}
+        {{content.content}}
       </td>
-
-
-
     </tr>
   </table>
 </div>
-

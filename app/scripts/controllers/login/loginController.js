@@ -1,57 +1,37 @@
-appModule.controller('loginController',function($scope, $http, $route) {
-			var currentUser = null;
-			var authorized = false;
+appModule.controller('loginController', [ '$window','$scope', '$http', '$route','globalVars','Auth0Store','authenticatedService'
+  ,function ($window,$scope, $http, $route,globalVars, Auth0Store,authenticatedService) {
+  $scope.submit = function () {
+    $http.post(
+      globalVars.keemonoUrl+'auth',
+    {
+      "username": $scope.username,
+      "password": $scope.password
+    }
+    ).success(function (data, status, headers, config) {
 
-			// initMaybe it wasn't meant to work for mpm?ial state says we haven't logged in or out yet...
-			// this tells us we are in public browsing
-			var initialState = true;
+      Auth0Store.set('api_key', data.token);
 
-			return {
-				initialState:function () {
-					return initialState;
-				},
-				login:function () {
+      //var myNewObject = Auth0Store.get('api_key');
 
-					$http.post('http://localhost:8080/keemono/login',
-						{"username": $scope.username, "password": $scope.password}).
-						success(function(data, status, headers, config) {
+      //console.table(' sirr :' +myNewObject);
+      $window.location.reload();
+      $window.location.href='/';
+      // this callback will be called asynchronously
+      // when the response is available
+    }).error(function (data, status, headers, config) {
 
-							currentUser = name;
-							authorized = true;
-							//console.log("Logged in as " + name);
-							initialState = false;
+      //console.log(config);
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+  };
+}]);
 
-							console.log('reloadddd');
-							$route.reload();
-							// this callback will be called asynchronously
-							// when the response is available
-						}).
-						error(function(data, status, headers, config) {
 
-							currentUser = name;
-							authorized = true;
-							//console.log("Logged in as " + name);
-							initialState = false;
-							console.log('errrrrrrr');
-							$route.reload();
-							// called asynchronously if an error occurs
-							// or server returns response with an error status.
-						});
-
-				},
-				logout:function () {
-					currentUser = null;
-					authorized = false;
-				},
-				isLoggedIn:function () {
-					return authorized;
-				},
-				currentUser:function () {
-					return currentUser;
-				},
-				authorized:function () {
-					return authorized;
-				}
-			};
-		}
-	);
+appModule.controller('logoutController', ['$window','$scope', '$http','globalVars','Auth0Store','$route' ,
+  function ($window,$scope, $http, globalVars,Auth0Store, $route) {
+    $scope.submit = function () {
+      Auth0Store.remove('api_key');
+      $window.location.reload();
+    }
+}]);

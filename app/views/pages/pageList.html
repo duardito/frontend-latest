@@ -1,29 +1,33 @@
 <div id="rest" class="container-fluid" ng-controller="pageListController">
-    <table height="15px" class="table table-condensed table-bordered table-hover table-striped">
-        <tr>
-            <td class="info">
-                {{'PAGE_NAME_TEXT' | translate}}
-            </td>
-
-        </tr>
-        <tr ng-repeat="page in pagelist">
-
-            <td class="info">
-
-                    {{page.bodyPage}}
-
-            </td>
-            <td class="info">
-
-                {{page.name}}
-
-            </td>
-            <td class="info">
-
-
-            </td>
-
-
-        </tr>
-    </table>
+  <table height="15px" class="table table-condensed table-bordered table-hover table-striped">
+    <thead>
+      <td class="info">
+        {{'PAGE_NAME_TEXT' | translate}}
+      </td>
+      <td class="info">
+        {{'PAGE_NAME_CREATOR_TEXT' | translate}}
+      </td>
+      <td class="info">
+        {{'PAGE_LAYOUT_CREATOR_TEXT' | translate}}
+      </td>
+      <td class="info">
+        {{'PAGE_LAYOUT_SCHEMA_TEXT' | translate}}
+      </td>
+    </thead>
+    <tr ng-repeat="page in pagelist">
+      <td class="info">
+        {{page.name}}
+      </td>
+      <td class="info">
+        {{page.creator}}
+      </td>
+      <td class="info">
+        {{page.layout.creator}}
+      </td>
+      <td class="info">
+        {{page.layout.schema}}
+      </td>
+    </tr>
+  </table>
 </div>
+

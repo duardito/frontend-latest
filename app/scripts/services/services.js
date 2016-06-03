@@ -54,31 +54,7 @@ appModule.factory('AuthService', function ($rootScope, $route, $http ) {
             },
             login:function (name, password) {
 
-                $http.post('http://localhost:8080/keemono/login',
-                    {"username": $rootScope.username, "password": $rootScope.password}).
-                    success(function(data, status, headers, config) {
-
-                        currentUser = name;
-                        authorized = true;
-                        //console.log("Logged in as " + name);
-                        initialState = false;
-
-                        console.log('reloadddd');
-                        $route.reload();
-                        // this callback will be called asynchronously
-                        // when the response is available
-                    }).
-                    error(function(data, status, headers, config) {
-
-                        currentUser = name;
-                        authorized = true;
-                        //console.log("Logged in as " + name);
-                        initialState = false;
-                        console.log('errrrrrrr');
-                        $route.reload();
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
-                    });
+                return 'ok';
             },
             logout:function () {
                 currentUser = null;

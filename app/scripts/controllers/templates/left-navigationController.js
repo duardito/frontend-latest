@@ -4,7 +4,7 @@
                 {"name":"login","description":"Login"},
                 {"name":"user","description":"User admin"},
                 {"name":"page","description":"Pages admin"},
-				{"name":"userList","description":"User list"},
-				{"name":"pageList","description":"Page list"}
+                {"name":"userList","description":"User list"},
+                {"name":"pageList","description":"Page list"}
             ];
         });

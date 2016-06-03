@@ -1,6 +1,6 @@
-	appModule.controller('saveUserController',function($scope, $http) {
+	appModule.controller('saveUserController',['$scope', '$http', 'globalVars',function($scope, $http) {
 	$scope.submit = function() {
-		$http.post('http://31.200.241.46:8080/admin/user/save',
+		$http.post(globalVars.keemonoUrl+'user/save',
 				{"username": $scope.username, "password": $scope.password, "email" : $scope.email, "role" :$scope.role.name}).
 				success(function(data, status, headers, config) {
 					// this callback will be called asynchronously
@@ -11,4 +11,4 @@
 					// or server returns response with an error status.
 				});
 	};
-});
+}]);
