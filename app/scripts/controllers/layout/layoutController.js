@@ -1,12 +1,10 @@
 appModule.controller('saveLayoutController',['$scope', '$http', '$route','globalVars', function ($scope, $http, $route, globalVars) {
-  $scope.layouts = "{}";
   $scope.submit = function () {
-    $http.post(globalVars.keemonoUrl+'layout/save',
+    $http.post(globalVars.keemonoUrl+'layout',
       {
-        "name": $scope.pagename,
-        "headerPage": {headerContent: $scope.headpage},
-        "bodyPage": {bodyContent: $scope.bodypage},
-        "footerPage": {footerContent: $scope.footerpage}
+        "creator": "none",
+        "name": $scope.name,
+        "schema":  $scope.content
       }).success(function (data, status, headers, config) {
       $route.reload();
       // this callback will be called asynchronously

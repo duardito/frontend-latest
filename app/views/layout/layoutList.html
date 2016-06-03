@@ -4,11 +4,19 @@
       <td class="info">
         {{'LAYOUT_NAME_TEXT' | translate}}
       </td>
+      <td class="info">
+        {{'LAYOUT_DATA_TEXT' | translate}}
+      </td>
     </tr>
     <tr ng-repeat="layout in layoutList">
       <td class="info">
         {{layout.name}}
       </td>
+      <td class="info">
+        {{layout.schema}}
+      </td>
+
+
 
     </tr>
   </table>
