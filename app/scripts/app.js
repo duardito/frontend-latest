@@ -21,7 +21,8 @@ var appModule = angular
     'ui.sortable',
     'pascalprecht.translate',
     'angular-jwt',
-    'angular-storage'
+    'angular-storage',
+    'ngDragDrop'
   ]);
 
 var filters = angular.module('mytodoApp.filters', []);
@@ -194,6 +195,8 @@ appModule.controller('testController',
   function ($window,$scope, $http, globalVars,Auth0Store, $route, authenticatedService) {
 
     $scope.goCats = authenticatedService.getAuthenticated();
+
+    $scope.$watch($scope.goCats);
 
     // console.log(' brrrr :' + Auth0Store.get('api_key'));
     // var myNewObject = Auth0Store.get('api_key');

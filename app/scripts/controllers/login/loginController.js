@@ -32,12 +32,6 @@ appModule.controller('logoutController', ['$window','$scope', '$http','globalVar
   function ($window,$scope, $http, globalVars,Auth0Store, $route) {
     $scope.submit = function () {
       Auth0Store.remove('api_key');
-      //$route.reload();
-
-      // console.log(' brrrr :' + Auth0Store.get('api_key'));
-      // var myNewObject = Auth0Store.get('api_key');
-      //console.table(' sirr :' +myNewObject);
-      //$location.path('/');
       $window.location.reload();
     }
 }]);
