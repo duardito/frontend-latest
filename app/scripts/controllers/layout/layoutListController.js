@@ -12,3 +12,4 @@ appModule.controller('layoutListController', ['$scope', '$http','globalVars','Au
     // or server returns response with an error status.
   });
 }]);
+

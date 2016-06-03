@@ -1,9 +1,9 @@
 appModule.controller('savePageController',['$scope', '$http', '$route','globalVars', function ($scope, $http, $route, globalVars) {
-  $scope.layouts = [{id: '1', name: 'layout 1', img: 'assets/img/Desert-mini.jpg'}, {
-    id: '2',
-    name: 'layout 2',
-    img: 'assets/img/Desert-mini.jpg'
-  }];
+  $scope.layouts = [
+    {id: '1', name: 'layout 1', img: 'assets/img/Desert-mini.jpg'}
+    ,
+    {id: '2',name: 'layout 2', img: 'assets/img/Desert-mini.jpg' }
+  ];
 
   $scope.submit = function () {
     $http.post(globalVars.keemonoUrl+'page/save',
