@@ -1,4 +1,5 @@
-appModule.controller('loginController', [ '$scope', '$http', '$route','globalVars','Auth0Store',function ($scope, $http, $route,globalVars, Auth0Store) {
+appModule.controller('loginController', [ '$scope', '$http', '$route','globalVars','Auth0Store','authenticatedService'
+  ,function ($scope, $http, $route,globalVars, Auth0Store,authenticatedService) {
   $scope.submit = function () {
     $http.post(
       globalVars.keemonoUrl+'auth',
@@ -24,7 +25,6 @@ appModule.controller('loginController', [ '$scope', '$http', '$route','globalVar
     });
   };
 }]);
-
 
 
 appModule.controller('logoutController', ['$window','$scope', '$http','globalVars','Auth0Store','$route' ,

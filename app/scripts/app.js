@@ -163,13 +163,33 @@ appModule.config(['$routeProvider', '$locationProvider',
  }
  })});
  */
-
-
+appModule.factory('Auth0Store', function() {
+  return {
+    getAuthorization: function() {
+      return Auth0Store.get('api_key');
+    }
+  }
+});
 
 
 appModule.factory('Auth0Store', function (store) {
   return store.getNamespacedStore('auth0');
 });
+
+
+appModule.factory('authenticatedService', function(Auth0Store, jwtHelper) {
+  return {
+    getAuthenticated:function () {
+      var token = Auth0Store.get('api_key');
+      console.log('el token :' + token);
+      if(token != null){
+        return jwtHelper.isTokenExpired(token);
+      }
+      return false;
+    }
+  }
+ });
+
 
 appModule.config(function ($httpProvider) {
   // Pull in `userService` from the dependency injector
@@ -184,6 +204,7 @@ appModule.config(function ($httpProvider) {
           if(token != null){
 
             var bool = jwtHelper.isTokenExpired(token);
+           // $scope.authenticaticated = bool;
             //var date = jwtHelper.getTokenExpirationDate(token);
             //console.log('exopre :' + date);
             if(bool){
