@@ -5,25 +5,23 @@
                 {{'USER_NAME_TEXT' | translate}}
             </td>
 			<td class="info">
-                {{'EMAIL_TEXT' | translate}}
+                {{'LAST_NAME_TEXT' | translate}}
             </td>
 			<td class="info">
-                {{'ROLE_TEXT' | translate}}
+                {{'EMAIL_TEXT' | translate}}
             </td>
         </tr>
-        <tr ng-repeat="user in userList">
+        <tr ng-repeat="user in userlist">
 
             <td class="info">
-                {{module.name}}
+                {{user.name}}
             </td>
-
-            <td ng-repeat="col in module.shopList">
-                {{col.name}}
-
-                <select ng-model="selected.value" ng-options='pp.total as (  (pp.date | date:"dd/MM/yyyy") + ", "+ pp.price) for pp in col.productAttr'></select>
-
-            </td>
-
+          <td class="info">
+            {{user.lastName}}
+          </td>
+          <td class="info">
+            {{user.email}}
+          </td>
         </tr>
     </table>
 </div>

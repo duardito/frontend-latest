@@ -29,7 +29,8 @@ var filters = angular.module('mytodoApp.filters', []);
 var directives = angular.module('mytodoApp.directives', []);
 
 appModule.value('globalVars', {
-  keemonoUrl: 'http://localhost:8080/keemono/'
+    keemonoUrl: 'http://samuris.com:9339/keemono/'
+  //keemonoUrl: 'http://localhost:8080/keemono/'
 });
 
 appModule.directive("profile", function () {
@@ -93,7 +94,8 @@ appModule.config(['$routeProvider', '$locationProvider',
         templateUrl: 'views/users/user.html'
       })
       .when('/userList', {
-        templateUrl: 'views/users/userList.html'
+        templateUrl: 'views/users/userList.html',
+        controller: 'userListController'
       })
       .when('/pageList', {
         templateUrl: 'views/pages/pageList.html',
@@ -103,12 +105,9 @@ appModule.config(['$routeProvider', '$locationProvider',
         templateUrl: 'views/pages/page.html',
         controller: 'savePageController'
 
-      }).when('/empty', {
-      templateUrl: 'views/empty/empty.html'
-
-    }).when('/:name', {
+      }).when('/:name', {
       templateUrl: 'views/empty/empty.html',
-      //controller: PagesController
+      controller: 'empty'
     });
   }
 
@@ -221,8 +220,7 @@ appModule.config(function ($httpProvider) {
 
             var bool = jwtHelper.isTokenExpired(token);
            // $scope.authenticaticated = bool;
-            //var date = jwtHelper.getTokenExpirationDate(token);
-            //console.log('exopre :' + date);
+            var date = jwtHelper.getTokenExpirationDate(token);
             if(bool){
               req.headers['api_key'] ='';
             }else{
@@ -245,11 +243,5 @@ appModule.config(function ($httpProvider) {
 
 
 function PagesController($scope, $http, $route, $routeParams, $compile) {
-  /**$route.current.templateUrl = '' + $routeParams.name + ".html";**/
-  $route.current.templateUrl = 'views/empty/empty.html';
-  $http.get($route.current.templateUrl).then(function (msg) {
-    $('#views').html($compile(msg.data)($scope));
-  });
 }
-PagesController.$inject = ['$scope', '$http', '$route', '$routeParams', '$compile'];
 

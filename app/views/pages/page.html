@@ -14,7 +14,7 @@
       <ul>
         <li ng-repeat="layout in layouts">
           <label>
-            <input type="radio" ng-model="$parent.name" name="name" required/>&nbsp;<img src="{{layout.img}}"/>
+            <input type="radio" ng-model="$parent.name" name="name" required/>&nbsp;<img src="{{layout.img}}"/>{{layout.name}}
           </label>
         </li>
       </ul>
@@ -51,7 +51,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-10">
-      <button type="submit" id="submit" class="btn btn-primary">{{'SAVE_PAGE_TEXT' | translate}}</button>
+      <button type="submit" id="submit" class="btn btn-primary">{{'BUTTON_SAVE' | translate}}</button>
     </div>
   </div>
 </form>

@@ -19,12 +19,23 @@ appModule.controller('empty' ,['$scope', '$http', '$resource', '$location', 'Sel
   function($scope, $http,$resource, $location, SelectedId, globalVars) {
 
     var lastParam = SelectedId.dataObj;
-    var value = $resource(globalVars.keemonoUrl+'page/:name');
-    $scope.empty =value.get({
-        name: lastParam
-    }, function(resp) {
+    $http.get(globalVars.keemonoUrl+'page/'+lastParam). success(function(data) {
+      $scope.empty=data;
+      // this callback will be called asynchronously
+      // when the response is available
+    }).
+    error(function(data) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+    /*
+     //var value = $resource(globalVars.keemonoUrl+'page/:name');
+    $scope.empty =value.get({name: lastParam},
+      function(resp) {
+      $scope.empty = resp;
      }, function(err) {
 
      });
-    return $scope.empty;
+     */
+    //return $scope.empty;
 }]);
