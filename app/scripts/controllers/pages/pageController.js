@@ -2,6 +2,7 @@ appModule.controller('savePageController',['$scope', '$http', '$route','globalVa
   $scope.layouts = {};
   layoutService.getLayoutList().then(function(response) {
     $scope.layouts =response;
+   // console.table($scope.layouts);
   });
 
  // console.table($scope.layouts);
@@ -13,12 +14,10 @@ appModule.controller('savePageController',['$scope', '$http', '$route','globalVa
   ];
 */
   $scope.submit = function () {
-    $http.post(globalVars.keemonoUrl+'page/save',
+    $http.post(globalVars.keemonoUrl+'page',
       {
         "name": $scope.pagename,
-        "headerPage": {headerContent: $scope.headpage},
-        "bodyPage": {bodyContent: $scope.bodypage},
-        "footerPage": {footerContent: $scope.footerpage}
+        "layout":  $scope.uuid
       }).success(function (data, status, headers, config) {
       $route.reload();
       // this callback will be called asynchronously

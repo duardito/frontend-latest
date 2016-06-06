@@ -39,7 +39,9 @@ appModule.config(function ($translateProvider) {
     CONTENT_LIST_TEXT:'Content List',
     LAYOUT_NAME_TEXT:'Layout name',
     BUTTON_SAVE:'Save',
-    LOGOUT_TEXT:'Logout'
+    LOGOUT_TEXT:'Logout',
+    EDIT_MODE_TEXT:'Edit mode',
+    READ_MODE_TEXT:'Read mode'
   })
     .translations('de', {
       BUTTON_TEXT_DE: 'englisch',

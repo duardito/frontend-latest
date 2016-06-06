@@ -22,7 +22,8 @@
                   <li class="divider"></li>
                   <li class="dropdown-header">Advanced</li>
 
-                  <li><a href="#">Administration</a></li>
+                  <li><a ng-controller="editModeController" href="#edit" ng-click="submit()" target="_self">{{'EDIT_MODE_TEXT' | translate}}</a></li>
+                  <li><a ng-controller="readModeController" href="#read" ng-click="submit()" target="_self">{{'READ_MODE_TEXT' | translate}}</a></li>
                 </ul>
               </li>
             </ul>
