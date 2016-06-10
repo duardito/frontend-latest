@@ -5,7 +5,7 @@ appModule.controller('editModeController', ['$scope', '$rootScope',
     };
   }]);
 
-appModule.controller('readModeController',['$scope', '$rootScope',
+appModule.controller('readModeController', ['$scope', '$rootScope',
   function ($scope, $rootScope) {
     $scope.submit = function () {
       $rootScope.mode = 'read';

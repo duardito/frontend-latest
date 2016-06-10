@@ -1,8 +1,10 @@
-<div  ng-controller="empty" >
+
+<div  ng-style="mode">
+  <div  ng-controller="empty" >
     <head>
-        <style>
-            {{empty.headerPage.headerContent}}
-        </style>
+      <style>
+        {{empty.headerPage.headerContent}}
+      </style>
     </head>
 
 
@@ -10,4 +12,8 @@
       <div ng-bind-html="empty.layout.schema | unsafe"/>
     </div>
 
+  </div>
 </div>
+
+
+

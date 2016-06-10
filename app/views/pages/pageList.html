@@ -1,6 +1,9 @@
 <div id="rest" class="container-fluid" ng-controller="pageListController">
   <table height="15px" class="table table-condensed table-bordered table-hover table-striped">
     <thead>
+    <td class="info">
+
+    </td>
       <td class="info">
         {{'PAGE_NAME_TEXT' | translate}}
       </td>
@@ -15,18 +18,27 @@
       </td>
     </thead>
     <tr ng-repeat="page in pagelist">
+      <td>
+        <a href="#">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a href="#">
+          <span class="glyphicon glyphicon-edit"></span>
+        </a>
+      </td>
       <td class="info">
         {{page.name}}
       </td>
       <td class="info">
-        {{page.creator}}
+        {{page.creator.name}}
       </td>
       <td class="info">
-        {{page.layout.creator}}
+        {{page.layout.creator.name}}
       </td>
       <td class="info">
         {{page.layout.schema}}
       </td>
+
     </tr>
   </table>
 </div>

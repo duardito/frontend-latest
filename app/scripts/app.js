@@ -29,8 +29,8 @@ var filters = angular.module('mytodoApp.filters', []);
 var directives = angular.module('mytodoApp.directives', []);
 
 appModule.value('globalVars', {
-   // keemonoUrl: 'http://samuris.com:9339/keemono/'
-  keemonoUrl: 'http://localhost:8080/keemono/'
+   keemonoUrl: 'http://samuris.com:9339/keemono/'
+ // keemonoUrl: 'http://localhost:8080/keemono/'
 });
 
 appModule.directive("profile", function () {
