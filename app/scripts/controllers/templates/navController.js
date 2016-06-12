@@ -1,5 +1,5 @@
-appModule.controller('navUrlController', ['$scope', '$http', 'SelectedId', 'globalVars',
-  function ($scope, $http, SelectedId, globalVars) {
+appModule.controller('navUrlController', ['$scope', '$http', 'SelectedId', 'globalVars','$route',
+  function ($scope, $http, SelectedId, globalVars,$route) {
   $scope.ShowId = function (obj) {
     SelectedId.dataObj = obj.target.getAttribute("id");
   }
@@ -18,20 +18,13 @@ appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'Sel
     var lastParam = SelectedId.dataObj;
     $http.get(globalVars.keemonoUrl + 'page/' + lastParam).success(function (data) {
       $scope.empty = data;
-      console.log($rootScope.mode);
-      if($rootScope.mode !=='undefined' && $rootScope.mode =='edit'){
-        $scope.mode = {
-          "color" : "white",
-          "background-color" : "coral",
-          "font-size" : "60px",
-          "padding" : "50px"
+      if(typeof $rootScope.mode == 'undefined' || $rootScope.mode =='edit'){
+        $scope.visualization = {
+          "border-style": "dashed"
         }
       }else{
-        $scope.mode = {
-          "color" : "white",
-          "background-color" : "blue",
-          "font-size" : "60px",
-          "padding" : "50px"
+        $scope.visualization = {
+          "border-style": "none"
         }
       }
 
