@@ -1,40 +1,50 @@
-appModule.controller('navUrlController', ['$scope', '$http', 'SelectedId', 'globalVars','$route',
-  function ($scope, $http, SelectedId, globalVars,$route) {
-  $scope.ShowId = function (obj) {
-    SelectedId.dataObj = obj.target.getAttribute("id");
-  }
+appModule.controller('navUrlController', ['$scope', '$http', 'SelectedId', 'globalVars', '$route',
+  function ($scope, $http, SelectedId, globalVars, $route) {
+    $scope.ShowId = function (obj) {
+      SelectedId.dataObj = obj.target.getAttribute("id");
+    }
 
-  $http.get(globalVars.keemonoUrl + 'page/list').success(function (data) {
-    $scope.urls = data;
+    $http.get(globalVars.keemonoUrl + 'page/list').success(function (data) {
+      $scope.urls = data;
 
-  }).error(function (data) {
+    }).error(function (data) {
 
-  });
-}]);
+    });
+  }]);
 
-appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'SelectedId', 'globalVars','$rootScope',
-  function ($scope, $http, $resource, $location, SelectedId, globalVars,$rootScope) {
+appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'SelectedId', 'globalVars', '$rootScope', '$compile','$sce',
+  function ($scope, $http, $resource, $location, SelectedId, globalVars, $rootScope, $compile,$sce) {
     var lastParam = SelectedId.dataObj;
     $http.get(globalVars.keemonoUrl + 'page/' + lastParam).success(function (data) {
-      $scope.empty = data;
-      $scope.validData = $scope.empty.layout.schema;
-      if(typeof $rootScope.mode == 'undefined' || $rootScope.mode =='edit'){
 
-        $scope.validData = $scope.validData.replace(/visualization/g, 'border-style: dashed');
+      $scope.empty = data;
+
+      // $scope.validData = $scope.empty.layout.schema;
+      // $scope.showEditFields = {};
+
+      //$compile($scope.validData);
+
+
+      if (typeof $rootScope.mode == 'undefined' || $rootScope.mode == 'edit') {
+
+        //$scope.validData = $scope.validData.replace(/visualization/g, 'border-style: dashed');
         $scope.visualization = {
           "border-style": "dashed"
         }
-      }else{
-        $scope.validData = $scope.validData.replace(/visualization/g, 'border-style: none');
+      } else {
+        // $scope.validData = $scope.validData.replace(/visualization/g, 'border-style: none');
         $scope.visualization = {
           "border-style": "none"
         }
       }
 
-     // console.table($scope.visualization);
+      $scope.editModeEnabled = $rootScope.mode === 'edit';
 
+      // $scope.trustedHtml = $sce.trustAsHtml('<button ng-click="testAlert()">Submit</button>');
 
-      console.log($scope.validData);
+      // $scope.modValidData = $compile($scope.validData)($scope);
+      //console.log($scope.modValidData);
+      //console.log($scope.modValidData);
     }).error(function (data) {
 
     });

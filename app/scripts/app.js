@@ -99,8 +99,6 @@ appModule.config(['$routeProvider', '$locationProvider',
         controller: 'readModeController'
       })
 
-
-
       .when('/user', {
         templateUrl: 'views/users/user.html'
       })
@@ -204,9 +202,9 @@ appModule.controller('testController',
   ['$window','$scope', '$http','globalVars','Auth0Store','$route' ,'authenticatedService',
   function ($window,$scope, $http, globalVars,Auth0Store, $route, authenticatedService) {
 
-    $scope.goCats = authenticatedService.getAuthenticated();
+    $scope.authenticated = authenticatedService.getAuthenticated();
 
-    $scope.$watch($scope.goCats);
+    //$scope.$watch($scope.goCats);
 
     // console.log(' brrrr :' + Auth0Store.get('api_key'));
     // var myNewObject = Auth0Store.get('api_key');
@@ -219,7 +217,7 @@ appModule.controller('testController',
 
 appModule.config(function ($httpProvider) {
   // Pull in `userService` from the dependency injector
-  $httpProvider.interceptors.push(function (Auth0Store, jwtHelper) {
+  $httpProvider.interceptors.push(function (Auth0Store, jwtHelper,globalVars) {
     return {
       request: function (req) {
 
@@ -252,7 +250,14 @@ appModule.config(function ($httpProvider) {
   })
 });
 
-
+/*
 function PagesController($scope, $http, $route, $routeParams, $compile) {
+  $route.current.templateUrl = '' + $routeParams.name + ".html";
+  $route.current.templateUrl = 'views/empty/empty.html';
+  $http.get($route.current.templateUrl).then(function (msg) {
+    $('#views').html($compile(msg.data)($scope));
+  });
 }
+PagesController.$inject = ['$scope', '$http', '$route', '$routeParams', '$compile'];
+*/
 

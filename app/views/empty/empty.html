@@ -1,17 +1,14 @@
-<div >
-  <div  ng-controller="empty" >
-    <head>
-      <style>
-        {{empty.headerPage.headerContent}}
-      </style>
-    </head>
+<div  ng-controller="empty" >
+  <head>
+    <style>
+      {{empty.headerPage.headerContent}}
+    </style>
+  </head>
 
-
-    <div>
-      <div ng-bind-html="validData | unsafe"/>
-    </div>
-
+  <div ng-class="{'edit-mode': editModeEnabled }">
+    <div ng-bind-html="empty.layout.schema | unsafe"/>
   </div>
+
 </div>
 
 
