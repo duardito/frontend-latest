@@ -6,5 +6,16 @@
   border-color: #E7E7E7;
 }
 .edit-mode .row > div {
-  border-style: dashed;
+  border-style: dotted;
+}
+
+.read-mode .row > div {
+  border-style: none;
+}
+
+.read-mode .row .editable > a {
+  display:none;
+}
+.edit-mode .row .editable > a {
+  display: inline;
 }

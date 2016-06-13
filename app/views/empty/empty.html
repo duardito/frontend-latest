@@ -1,11 +1,15 @@
-<div  ng-controller="empty" >
+<div ng-controller="empty">
   <head>
     <style>
-      {{empty.headerPage.headerContent}}
+      {
+      {
+        empty . headerPage . headerContent
+      }
+      }
     </style>
   </head>
 
-  <div ng-class="{'edit-mode': editModeEnabled }">
+  <div ng-class="{'edit':'edit-mode', 'read':'read-mode'}[mode]">
     <div ng-bind-html="empty.layout.schema | unsafe"/>
   </div>
 

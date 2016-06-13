@@ -12,39 +12,18 @@ appModule.controller('navUrlController', ['$scope', '$http', 'SelectedId', 'glob
     });
   }]);
 
-appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'SelectedId', 'globalVars', '$rootScope', '$compile','$sce',
-  function ($scope, $http, $resource, $location, SelectedId, globalVars, $rootScope, $compile,$sce) {
+appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'SelectedId', 'globalVars', '$rootScope', '$compile', '$sce',
+  function ($scope, $http, $resource, $location, SelectedId, globalVars, $rootScope, $compile, $sce) {
     var lastParam = SelectedId.dataObj;
     $http.get(globalVars.keemonoUrl + 'page/' + lastParam).success(function (data) {
 
       $scope.empty = data;
 
-      // $scope.validData = $scope.empty.layout.schema;
-      // $scope.showEditFields = {};
-
-      //$compile($scope.validData);
-
-
-      if (typeof $rootScope.mode == 'undefined' || $rootScope.mode == 'edit') {
-
-        //$scope.validData = $scope.validData.replace(/visualization/g, 'border-style: dashed');
-        $scope.visualization = {
-          "border-style": "dashed"
-        }
+      if (typeof $rootScope.mode == 'undefined') {
+        $scope.status = 'read';
       } else {
-        // $scope.validData = $scope.validData.replace(/visualization/g, 'border-style: none');
-        $scope.visualization = {
-          "border-style": "none"
-        }
+        $scope.status = $rootScope.mode;
       }
-
-      $scope.editModeEnabled = $rootScope.mode === 'edit';
-
-      // $scope.trustedHtml = $sce.trustAsHtml('<button ng-click="testAlert()">Submit</button>');
-
-      // $scope.modValidData = $compile($scope.validData)($scope);
-      //console.log($scope.modValidData);
-      //console.log($scope.modValidData);
     }).error(function (data) {
 
     });
@@ -59,3 +38,9 @@ appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'Sel
      */
     //return $scope.empty;
   }]);
+
+appModule.directive("c", function () {
+  return {
+    template: "<h1>Made by a directive!</h1>"
+  };
+});
