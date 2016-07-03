@@ -1,17 +1,24 @@
 <div ng-controller="empty">
   <head>
     <style>
-      {
-      {
-        empty . headerPage . headerContent
-      }
+      .thumbnail {
+        border: 1px solid #ddd;
+        min-height: 50px;
       }
     </style>
   </head>
-
   <div ng-class="{'edit':'edit-mode', 'read':'read-mode'}[mode]">
-    <div ng-bind-html="empty.layout.schema | unsafe"/>
+    <div class="thumbnail" ng-repeat="model in list1" data-drop="true" ng-model='list1'
+         jqyoui-droppable="{index: {{$index}} , stack: true, multiple:true}">
+      <div data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1"
+           jqyoui-draggable="{index: {{$index}},animate: true }">
+        <div ng-bind-html="model.content | unsafe"/>
+      </div>
+    </div>
   </div>
+
+
+
 
 </div>
 

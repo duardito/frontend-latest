@@ -18,12 +18,20 @@ appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'Sel
     $http.get(globalVars.keemonoUrl + 'page/' + lastParam).success(function (data) {
 
       $scope.empty = data;
+      console.log($scope.empty.content)
+      //$compile($scope.empty)($scope);
+      $scope.list1 = $scope.empty.content;
+      $scope.list22 = {};
+
+
+      //console.log($compile($scope.empty)($scope));
 
       if (typeof $rootScope.mode == 'undefined') {
         $scope.status = 'read';
       } else {
         $scope.status = $rootScope.mode;
       }
+
     }).error(function (data) {
 
     });
@@ -39,8 +47,23 @@ appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'Sel
     //return $scope.empty;
   }]);
 
+appModule.factory('layoutService', function ($http, globalVars, $q) {
+  return {
+    getLayoutList: function () {
+      var deferred = $q.defer();
+      $http.get(globalVars.keemonoUrl + 'layout/list').success(function (data) {
+        deferred.resolve(data);
+      }).error(function (data) {
+        deferred.reject({message: "error"});
+      });
+      return deferred.promise;
+    }
+  }
+});
+
 appModule.directive("c", function () {
   return {
     template: "<h1>Made by a directive!</h1>"
   };
 });
+

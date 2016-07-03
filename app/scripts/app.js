@@ -29,8 +29,8 @@ var filters = angular.module('mytodoApp.filters', []);
 var directives = angular.module('mytodoApp.directives', []);
 
 appModule.value('globalVars', {
-   keemonoUrl: 'http://samuris.com:9339/keemono/'
- // keemonoUrl: 'http://localhost:8080/keemono/'
+  // keemonoUrl: 'http://samuris.com:9339/keemono/'
+  keemonoUrl: 'http://localhost:8080/keemono/'
 });
 
 appModule.directive("profile", function () {
@@ -255,9 +255,10 @@ function PagesController($scope, $http, $route, $routeParams, $compile) {
   $route.current.templateUrl = '' + $routeParams.name + ".html";
   $route.current.templateUrl = 'views/empty/empty.html';
   $http.get($route.current.templateUrl).then(function (msg) {
+    console.log($route.current.templateUrl);
     $('#views').html($compile(msg.data)($scope));
   });
-}
-PagesController.$inject = ['$scope', '$http', '$route', '$routeParams', '$compile'];
+
+PagesController.$inject = ['$scope', '$http', '$route', '$routeParams', '$compile']};
 */
 

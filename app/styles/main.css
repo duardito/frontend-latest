@@ -7,15 +7,29 @@
 }
 .edit-mode .row > div {
   border-style: dotted;
+  min-height: 50px;
+  height: auto;
 }
 
 .read-mode .row > div {
   border-style: none;
+  height: auto;
+  min-height: 50px;
 }
 
 .read-mode .row .editable > a {
   display:none;
+  min-height: 50px;
+  height: auto;
 }
 .edit-mode .row .editable > a {
   display: inline;
+  min-height: 50px;
+  border-style: dotted;
+  height: auto;
+}
+
+.visualization{
+  min-height: 50px;
+  height: 50px;
 }
