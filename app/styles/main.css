@@ -30,6 +30,7 @@
 }
 
 .visualization{
+  border-style: dotted;
   min-height: 50px;
-  height: 50px;
+  height: auto;
 }

@@ -18,11 +18,9 @@ appModule.controller('empty', ['$scope', '$http', '$resource', '$location', 'Sel
     $http.get(globalVars.keemonoUrl + 'page/' + lastParam).success(function (data) {
 
       $scope.empty = data;
-      console.log($scope.empty.content)
-      //$compile($scope.empty)($scope);
-      $scope.list1 = $scope.empty.content;
-      $scope.list22 = {};
 
+      $scope.list1 = $scope.empty.response;
+      $scope.list22 = {};
 
       //console.log($compile($scope.empty)($scope));
 
